@@ -1,4 +1,4 @@
-namespace CharpInDepthStudy.Chapter1;
+namespace CSharpInDepthStudy.Chapter1;
 
 public class Book
 {
