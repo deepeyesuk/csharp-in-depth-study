@@ -1,4 +1,4 @@
-namespace CharpInDepthStudy;
+namespace CSharpInDepthStudy;
 
 public class UnitTest1
 {

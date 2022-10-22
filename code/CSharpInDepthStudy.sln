@@ -1,6 +1,6 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CharpInDepthStudy", "CharpInDepthStudy\CharpInDepthStudy.csproj", "{60F15836-571E-412B-88F4-27D551C6C8DB}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CSharpInDepthStudy", "CSharpInDepthStudy\CSharpInDepthStudy.csproj", "{60F15836-571E-412B-88F4-27D551C6C8DB}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
