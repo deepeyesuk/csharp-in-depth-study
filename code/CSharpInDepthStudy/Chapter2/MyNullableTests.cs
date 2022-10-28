@@ -55,9 +55,9 @@ public class MyNullableTests
 
         if (cheese.HasValue)
         {
-            var total = bread + 1 + cheese.xxx;    
+            // var total1 = bread + 1 + cheese.xxx;    
         }
         
-        var total = bread + 1 + cheese?.xxx;
+        // var total2 = bread + 1 + cheese?.xxx;
     }
 }
