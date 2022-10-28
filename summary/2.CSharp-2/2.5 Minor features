@@ -1,0 +1,106 @@
+## 2.5.1 Partial types
+Partial types that allow code for a single type to be split across multiple source files
+C# 3 introduced an extra feature to partial types called partial methods.
+
+부분클래스 - 1) 여러 개의 파일에 하나의 클래스를 분리해서 생성/관리 (대형 프로젝트에 적합)2) 하나의 파일에서 여러 개의 클래스를 생성/관리
+```
+Example - several partial classes in a file
+partial class Emp
+{
+  public void Study(){console.writleLine("C#")}
+}
+
+partial class Emp
+{
+  public void Study2(){console.writleLine("Java")}
+}
+
+class MainTest
+{
+  static void Main()
+  {
+    Emp e = new Emp();
+    e.Stdudy();ss
+    e.Study2();
+  }
+}
+```
+부분함수 - 부분클래스에서 선언만 하고 다른 부분클래스에 함수를 구현(만약 구현 안 하면 그 함수를 빼놓고 컴파일)
+1) 선언과 정의 타입이 당연히 일치해야 2) 리턴 타입은 void 3) virtual/override/Sealed 없음 4) 함수 시작은 항상 partial 로 시작
+5) 아웃파라미터 사용금지
+
+## 2.5.2 Static classes
+- Static classes for utility types - Static classes are classes declared with the static modifier. 
+- 스태틱클래스 인스턴스생성 / 프로퍼티 / 컨스트럭터 선언금지
+- can contaion regular nested types (e.g. nested classs) 
+
+## 2.5.3 Seperate getter/setter for properties
+Separate accessibility (public, private, and so on) for get and set accessors in properties
+씨샾1 에서는 분리가 되지 않았음
+```
+private string text;
+public string Text {
+    get { return text; }
+private set { text = value; } }
+
+```
+
+## 2.5.4 Namespace aliases
+Improvements to namespace aliases to make it easier to work with code that uses the same names in multiple namespaces or assemblies
+Namespace aliases allow the programmer to define an alternate name for a namespace.
+They are commonly used as a convenient shortcut for long or deeply-nested namespaces.
+
+C# 2 introduces global as a namespace alias that always refers to the global namespace. In addition to referring to types in the global namespace, the global namespace alias can be used as a sort of “root” for fully qualified namesㄴ
+네임스페이스 충돌
+https://blog.naver.com/techshare/222617052638
+
+## 2.5.5 Pragma directives
+Pragma directives that allow additional compiler-specific features such as tem- porarily disabling warnings
+Pragma directives are implementation-specific directives that give extra information to the compiler.
+컴파일러 기능을 조정하는 비표준전처리기? (씨언어에서 유래) 
+
+For example, to disable warning CS0219 (“variable is assigned but its value is never used”) for a specific piece of code, you might write this:
+```
+에러는 아니다 warning을 disable로 처리하라고 컴파일러에게 지시 
+#pragma warning disable CS0219
+int variable = CallSomeMethod();
+#pragma warning restore CS0219
+```
+## 2.5.6 Fixed-size buffers
+Fixed-size buffers for inline data in unsafe code.
+Fixed-size buffers can be used only in unsafe code and only within structs. 
+They effectively allocate a chunk of memory inline within the struct using the fixed modi- fier. 
+고정된 메모리를 할당해 놓고, 메모리가 버퍼사이즈를 초과하면 버퍼를 다시 할당해서 값을 복사하여 넣는다? 
+
+
+## 2.5.7 InternalsVisibleTo
+The [InternalsVisibleTo] attribute, which makes testing simpler
+
+internal class는 어셈블리 내에서만 사용할 수 있고, 외부 어셈블리에서는 사용할 수 없다. 만약 외부 어셈블리에서 internal class를 사용하고 싶다면, InternalsVisibleTo어트리뷰트를 사용하면 된다.
+
+```
+internal class를 정의
+namespace InternalAssembly
+{
+    internal class InternalClass
+    {
+    }
+}
+
+AssemblyInfo.cs파일에 internal class를 사용할 외부 어셈블리를 지정
+[assembly: InternalsVisibleTo("ExternalAssembly")]
+
+지정된 외부 어셈블리에서 internal class를 사용
+using InternalAssembly;
+
+namespace ExternalAssembly
+{
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            var internalObject = new InternalClass();
+        }
+    }
+}
+```
