@@ -3,6 +3,7 @@ Partial types that allow code for a single type to be split across multiple sour
 C# 3 introduced an extra feature to partial types called partial methods.
 
 부분클래스 - 1) 여러 개의 파일에 하나의 클래스를 분리해서 생성/관리 (대형 프로젝트에 적합)2) 하나의 파일에서 여러 개의 클래스를 생성/관리
+
 ```csharp
 Example - several partial classes in a file
 partial class Emp
