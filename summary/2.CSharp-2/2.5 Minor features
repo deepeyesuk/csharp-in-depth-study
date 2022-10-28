@@ -3,7 +3,7 @@ Partial types that allow code for a single type to be split across multiple sour
 C# 3 introduced an extra feature to partial types called partial methods.
 
 부분클래스 - 1) 여러 개의 파일에 하나의 클래스를 분리해서 생성/관리 (대형 프로젝트에 적합)2) 하나의 파일에서 여러 개의 클래스를 생성/관리
-```
+```csharp
 Example - several partial classes in a file
 partial class Emp
 {
@@ -37,7 +37,7 @@ class MainTest
 ## 2.5.3 Seperate getter/setter for properties
 Separate accessibility (public, private, and so on) for get and set accessors in properties
 씨샾1 에서는 분리가 되지 않았음
-```
+```csharp
 private string text;
 public string Text {
     get { return text; }
@@ -60,7 +60,7 @@ Pragma directives are implementation-specific directives that give extra informa
 컴파일러 기능을 조정하는 비표준전처리기? (씨언어에서 유래) 
 
 For example, to disable warning CS0219 (“variable is assigned but its value is never used”) for a specific piece of code, you might write this:
-```
+```csharp
 에러는 아니다 warning을 disable로 처리하라고 컴파일러에게 지시 
 #pragma warning disable CS0219
 int variable = CallSomeMethod();
@@ -78,7 +78,7 @@ The [InternalsVisibleTo] attribute, which makes testing simpler
 
 internal class는 어셈블리 내에서만 사용할 수 있고, 외부 어셈블리에서는 사용할 수 없다. 만약 외부 어셈블리에서 internal class를 사용하고 싶다면, InternalsVisibleTo어트리뷰트를 사용하면 된다.
 
-```
+```csharp
 internal class를 정의
 namespace InternalAssembly
 {
