@@ -23,6 +23,28 @@ public class AnonymousTypeTests
         a.ShouldNotBe(b);
         //(a == b).ShouldBeTrue();
     }
+
+    [Fact]
+    public void TheTypeIsGeneric()
+    {
+        var a = new { age = "23", male = "1" };
+        var b = new { age = 23, male = 1 };
+        
+        // a.ShouldBe(b);
+
+        // a = b;
+    }
+
+    [Fact]
+    public void AssignAnonymousType()
+    {
+        var a = new { age = 23, male = true };
+        var b = new { age = 23, male = true };
+        
+        a.ShouldBe(b);
+
+        a = b;
+    }
 }
 
 public class Location
