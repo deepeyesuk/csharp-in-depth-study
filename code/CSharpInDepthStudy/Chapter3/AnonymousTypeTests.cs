@@ -12,12 +12,36 @@ public class AnonymousTypeTests
         this.output = output;
     }
     
+    
+    [Fact]
+    public void AnonymousType_WhenAccessNonExistingProperty_ShouldRaiseError()
+    {
+        var a = new { x = 10, y = 20 };
+ 
+        output.WriteLine(a.x.ToString());
+
+        //var z = a.z;
+    }
+
+    [Fact]
+    public void TestEqual()
+    {
+        var home = new Location { X = 1, Y = 2 };
+        var work = new Location { X = 3, Y = 2 };
+        
+        home.ShouldBe(work);
+    }
+    
     [Fact]
     public void AnonymousType_WhenPropertiesAreSame_ShouldEqual()
     {
         var a = new { x = 10, y = 20 };
         var b = new { x = 10, y = 20 };
         
+        
+        
+        var player = new { Name = "Pam", Score = 4000 }; 
+        player = new { Name = "James", Score = 5000 };
         a.ShouldBe(b);
     }
 
@@ -74,17 +98,20 @@ public class AnonymousTypeTests
     }
 }
 
+
 public class Location
 {
+
+   
     public int X { get; set; }
     public int Y { get; set; }
 
-    // public override bool Equals(object? obj)
-    // {
-    //     var compareTo = (Location)obj;
-    //
-    //     return X == compareTo.X && Y == compareTo.Y;
-    // }
+    public override bool Equals(object? obj)
+    {
+        var compareTo = (Location)obj;
+    
+        return X == compareTo.X && Y == compareTo.Y;
+    }
 }
 
 class CapturedVariableDemo
@@ -113,6 +140,9 @@ class CapturedVariableDemo
         return action;
     }
 
+    
+    
+    
     public List<Action> CreateActions()
     {
         List<Action> actions = new List<Action>();
